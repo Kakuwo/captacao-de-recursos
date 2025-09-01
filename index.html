@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PROPAGA | Captação de Recursos pelo Instagram</title>
+  <meta name="description" content="Assista ao vídeo e cadastre-se para receber o passo a passo de captação pelo Instagram." />
+  <meta property="og:title" content="PROPAGA | Captação de Recursos pelo Instagram" />
+  <meta property="og:description" content="Conheça a Comunidade PROPAGA. Assista ao vídeo e receba o mapa de captação." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:,">
+
+  <style>
+    :root{
+      --accent:#FF5A2C;
+      --bg:#0b0d10;
+      --card:#11151a;
+      --text:#e9edf2;
+      --muted:#9aa3b2;
+      --border:#2a2f38;
+      --radius:14px;
+      --shadow:0 8px 24px rgba(0,0,0,.22);
+      --maxw:1100px;
+      --input-h:48px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f8fafc; --card:#ffffff; --text:#0e1116; --muted:#596070;
+        --border:#e6e8ec; --shadow:0 10px 24px rgba(10,14,29,.08);
+      }
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 50% -15%, rgba(255,90,44,.14), transparent 65%),
+        var(--bg);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      display:grid; min-block-size:100dvh; grid-template-rows:auto 1fr auto;
+    }
+
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(8px);
+      background:color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{max-width:var(--maxw); margin:0 auto; padding:.9rem 1rem; display:flex; align-items:center; justify-content:space-between}
+    .brand{display:inline-flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.3px}
+    .brand-badge{inline-size:28px; block-size:28px; border-radius:10px; background:var(--accent)}
+
+    main{max-width:var(--maxw); margin:0 auto; padding:1.25rem 1.25rem 2.75rem}
+    @media (min-width:1280px){ main{padding:1.5rem 1.25rem 3rem} }
+
+    .grid{
+      display:grid; gap:1.8rem; grid-template-columns:1fr;
+      align-items:start;
+    }
+    @media (min-width:960px){ .grid{grid-template-columns:1.2fr .8fr} }
+
+    .panel{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .video-wrap{aspect-ratio:16/9; width:100%; display:grid; border-radius:calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 0; overflow:hidden}
+    .video-wrap iframe,.video-wrap video{width:100%; height:100%; border:0; display:block}
+    .video-meta{padding:1rem 1rem 1.2rem; border-top:1px solid var(--border)}
+    .eyebrow{display:inline-block; font-size:.82rem; color:var(--muted); border:1px solid var(--border); padding:.25rem .6rem; border-radius:999px}
+    h1{font-size:clamp(1.8rem,4vw,2.4rem); margin:.4rem 0 .2rem; line-height:1.18}
+    .sub{color:var(--muted); margin:0}
+
+    .form{padding:1.4rem 1.4rem 1.9rem}
+    .form h2{margin:.2rem 0 .8rem; font-size:clamp(1.2rem,2.4vw,1.5rem)}
+    form{display:flex; flex-direction:column; gap:1rem}
+    .row{display:grid; gap:.9rem; grid-template-columns:1fr}
+    @media (min-width:720px){ .row.two{grid-template-columns:1fr 1fr} }
+
+    label{font-size:.95rem}
+    input{
+      appearance:none; -webkit-appearance:none; -moz-appearance:none;
+      width:100%; height:var(--input-h);
+      padding:0 .9rem; background:transparent; color:var(--text);
+      border:1px solid var(--border); border-radius:12px; outline:none;
+      transition:border-color .15s, box-shadow .15s, transform .02s;
+    }
+    input::placeholder{color:var(--muted)}
+    input:focus{border-color:var(--accent); box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent)}
+
+    .btn{
+      height:calc(var(--input-h) + 2px);
+      display:inline-flex; align-items:center; justify-content:center;
+      width:100%; border:0; border-radius:12px; background:var(--accent); color:#fff;
+      font-weight:800; letter-spacing:.2px; cursor:pointer;
+      transition:transform .05s ease, filter .15s ease;
+      margin-top:.7rem; margin-bottom:.25rem;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn:active{transform:translateY(1px)}
+    .btn[disabled]{background:#8892a0; cursor:not-allowed}
+
+    .msg{margin-top:.7rem; padding:.9rem; border-radius:12px; border:1px solid; display:none}
+    .msg.ok{display:block; background:#0f1a14; border-color:#1f3a26; color:#c7f0d4}
+    .msg.err{display:block; background:#251112; border-color:#3a1e20; color:#f1b7b7}
+    @media (prefers-color-scheme: light){
+      .msg.ok{background:#eaf9ee; border-color:#b7e2c2; color:#104b22}
+      .msg.err{background:#fff1f1; border-color:#ffd3d3; color:#7a1010}
+    }
+
+    footer{border-top:1px solid var(--border); text-align:center; padding:1rem; color:var(--muted); font-size:.92rem}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="principal">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>PROPAGA</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="grid" aria-label="apresentação">
+      <article class="panel" aria-label="Vídeo de apresentação da comunidade">
+        <div class="video-wrap">
+          <iframe
+            title="Conheça a Comunidade PROPAGA"
+            src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-meta">
+          <span class="eyebrow">Para líderes de projetos sociais</span>
+          <h1>Captação de recursos pelo Instagram</h1>
+          <p class="sub">Assista e cadastre-se para receber o passo a passo no seu WhatsApp.</p>
+        </div>
+      </article>
+
+      <article class="panel form" aria-label="Formulário de contato">
+        <h2>Receba o passo a passo</h2>
+        <form id="leadForm" novalidate>
+          <div class="row">
+            <label for="nome">Nome completo *</label>
+            <input id="nome" name="nome" autocomplete="name" required />
+          </div>
+
+          <div class="row two">
+            <div>
+              <label for="telefone">Telefone *</label>
+              <input id="telefone" name="telefone" inputmode="tel" autocomplete="tel" required placeholder="Ex.: (11) 91234-5678" />
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input id="email" name="email" inputmode="email" autocomplete="email" placeholder="Opcional" />
+            </div>
+          </div>
+
+          <input type="hidden" name="utm_source" />
+          <input type="hidden" name="utm_medium" />
+          <input type="hidden" name="utm_campaign" />
+          <input type="hidden" name="utm_content" />
+          <input type="hidden" name="utm_term" />
+          <input type="hidden" name="gclid" />
+          <input type="hidden" name="fbclid" />
+          <input type="hidden" name="origem" value="LP_VIDEO_TOF" />
+
+          <button type="submit" class="btn">Quero receber no WhatsApp</button>
+          <div id="msg" class="msg" role="status" aria-live="polite"></div>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer>Usamos seus dados somente para contato sobre esta oferta.</footer>
+
+  <script>
+    /* ================= VARIÁVEIS ================= */
+    const ENDPOINT_URL   = 'https://script.google.com/macros/s/AKfycby6BlJJ8mNb47PBC-NnZ6dQYWIGc93paC_LS4NmlawTEPyXQSHjDRViJrYr-5oAa9Oq/exec';
+    const ORIGEM         = 'LP_VIDEO_TOF';
+    const WHATSAPP_NUM   = '5581999990000';  // ajuste para seu número
+    const USE_NO_CORS    = false;             // local: true. produção: false
+
+    /* ================= UTMs E HELPERS ================= */
+    const qs = new URLSearchParams(location.search);
+    function getUTMs(){
+      return {
+        utm_source: qs.get('utm_source') || '',
+        utm_medium: qs.get('utm_medium') || '',
+        utm_campaign: qs.get('utm_campaign') || '',
+        utm_content: qs.get('utm_content') || '',
+        utm_term: qs.get('utm_term') || '',
+        gclid: qs.get('gclid') || '',
+        fbclid: qs.get('fbclid') || ''
+      };
+    }
+    function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) }
+    function onlyDigits(v){ return (v||'').replace(/\D/g,'') }
+
+    const telInput = document.getElementById('telefone');
+    telInput.addEventListener('input', () => {
+      let v = telInput.value.replace(/\D/g,'').slice(0,11);
+      if (v.length > 2 && v.length <= 6) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if (v.length > 6 && v.length <= 10) v = `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
+      else if (v.length > 10) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      telInput.value = v;
+    });
+
+    const hiddenKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+    const utm = getUTMs();
+    hiddenKeys.forEach(k => {
+      const el = document.querySelector(`input[name="${k}"]`);
+      if (el) el.value = utm[k] || '';
+    });
+
+    const form = document.getElementById('leadForm');
+    const msg  = document.getElementById('msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.className = 'msg'; msg.textContent = '';
+
+      const btn = form.querySelector('button');
+
+      const nome = document.getElementById('nome').value.trim();
+      const telefoneDigits = onlyDigits(document.getElementById('telefone').value);
+      const email = document.getElementById('email').value.trim();
+
+      if (nome.split(' ').length < 2){ return fail('Digite seu nome completo.'); }
+      if (telefoneDigits.length < 10 || telefoneDigits.length > 11){ return fail('Telefone inválido.'); }
+      if (email && !validEmail(email)){ return fail('E-mail inválido.'); }
+
+      const payload = { nome, telefone: telefoneDigits, email, ...utm, origem: ORIGEM };
+      const body = new URLSearchParams(payload).toString(); // evita preflight
+
+      btn.disabled = true; const old = btn.textContent; btn.textContent = 'Enviando...';
+
+      try{
+        const res = await fetch(ENDPOINT_URL, {
+          method:'POST',
+          headers:{ 'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8' },
+          body,
+          mode: USE_NO_CORS ? 'no-cors' : 'cors',
+          credentials:'omit'
+        });
+
+        if (res.ok || res.type === 'opaque') {
+          form.reset();
+          ok('Cadastro realizado. Em breve você recebe o passo a passo.');
+          setTimeout(() => {
+            const texto = `Olá, vim da LP TOF e quero acesso. Cidade: [___] Projeto: [___]`;
+            const wa = new URL(`https://wa.me/${WHATSAPP_NUM}`);
+            wa.searchParams.set('text', texto);
+            for (const [k,v] of qs.entries()) wa.searchParams.append(k, v);
+            location.href = wa.toString();
+          }, 1200);
+        } else {
+          throw new Error('HTTP ' + res.status);
+        }
+
+      } catch(err){
+        fail('Falha no envio. Tente novamente.');
+        console.error(err);
+      } finally {
+        btn.disabled = false; btn.textContent = old;
+      }
+    });
+
+    function ok(text){ msg.className='msg ok'; msg.textContent=text; }
+    function fail(text){ msg.className='msg err'; msg.textContent=text; }
+  </script>
+</body>
+</html>
